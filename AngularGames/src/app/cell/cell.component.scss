@@ -1,0 +1,27 @@
+.cell {
+    aspect-ratio: 1;
+    height: 50px;
+    background: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-weight: bolder;
+    font-size: large;
+    box-sizing: border-box;
+    border: 4px black solid;
+    transition: all 0.5s;
+    border-radius: 5px;
+}
+
+.cell:hover {
+    background: black;
+    color: white;
+    transform: scale(1.1);
+}
+
+.value {
+    font-size: large;
+    font-weight: bolder;
+}

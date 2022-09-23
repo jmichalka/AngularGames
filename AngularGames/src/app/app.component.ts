@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AngularGames';
+  x:Number = 9;
+  y:Number = 9;
 }
