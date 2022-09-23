@@ -390,6 +390,13 @@
   <h2>Next Steps</h2>
   <p>What do you want to do next with your app?</p>
 
+
+  <div class="row" *ngFor="let i of [].constructor(x); let a = index"> <!--0 (0,1,2), 1 (0,1,2), 2 (0,1,2)-->
+    <div class="cell" *ngFor="let j of [].constructor(y); let b = index">
+      <app-cell [initialValue]="(b + 1)"></app-cell>
+    </div>
+  </div>
+
   <input type="hidden" #selection>
 
   <div class="card-container">
