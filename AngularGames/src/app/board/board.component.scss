@@ -1,0 +1,9 @@
+.board {
+    --width: 9;
+    --height: 9;
+
+    display: inline-grid;
+    grid-template-columns: repeat(var(--width), 1fr);
+    grid-template-rows: repeat(var(--height), 1fr);
+    justify-content:center;
+}
