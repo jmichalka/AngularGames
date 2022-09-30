@@ -10,12 +10,28 @@
     font-weight: bolder;
     font-size: large;
     box-sizing: border-box;
-    border: 2px black solid;
+    border: 1px black solid;
     transition: color 0.5s;
     border-radius: 5px;
 
     // Use this to remove text highlighting. Might need to remove 
     // user-select: none;  
+}
+
+.leftBorder {
+ border-left: 3px green solid;
+}
+
+.rightBorder {
+  border-right: 3px red solid;
+}
+
+.topBorder {
+    border-top: 3px;
+}
+
+.bottomBorder {
+    border-bottom: 3px gray solid;
 }
 
 .cell:hover {

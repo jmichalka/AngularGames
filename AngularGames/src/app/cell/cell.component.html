@@ -1,7 +1,13 @@
 <div #value class="cell" 
     (mouseover)="focus($event)" 
     (keydown)="insertNumber($event)" 
-    contenteditable="true"> 
+    contenteditable="true"
+    [ngClass]="{
+        'leftBorder': leftBorderOn,
+        'rightBorder': rightBorderOn,
+        'topBorder': topBorderOn,
+        'bottomBorder': bottomBorderOn
+    }"> 
     <div class="value">
         {{displayValue}}
     </div>
