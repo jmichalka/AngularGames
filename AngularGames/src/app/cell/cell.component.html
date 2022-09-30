@@ -1,5 +1,9 @@
-<div class="cell"> 
-    <div class="value">
+<div class="cell"
+    (mouseenter)="handleMouseEnter($event)"
+    (mouseleave)="handleMouseLeave($event)"
+    (keydown)="handleKeyDown($event)"> 
+    <div class="value"
+        contenteditable="true">
         {{displayValue}}
     </div>
 </div>
