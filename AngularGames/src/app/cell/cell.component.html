@@ -1,4 +1,7 @@
-<div class="cell"> 
+<div #value class="cell" 
+    (mouseover)="focus($event)" 
+    (keydown)="insertNumber($event)" 
+    contenteditable="true"> 
     <div class="value">
         {{displayValue}}
     </div>

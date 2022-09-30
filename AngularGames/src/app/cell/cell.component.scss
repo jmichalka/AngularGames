@@ -10,12 +10,12 @@
     font-weight: bolder;
     font-size: large;
     box-sizing: border-box;
-    border: 4px black solid;
+    border: 2px black solid;
     transition: color 0.5s;
     border-radius: 5px;
 
     // Use this to remove text highlighting. Might need to remove 
-    user-select: none;  
+    // user-select: none;  
 }
 
 .cell:hover {
@@ -27,4 +27,5 @@
 .value {
     font-size: large;
     font-weight: bolder;
+    caret-color: transparent;
 }
