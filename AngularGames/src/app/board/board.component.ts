@@ -9,32 +9,40 @@ import { Component, OnInit } from '@angular/core';
 export class BoardComponent {
   width = 9;
   height = 9;
-  values = this.generate();
+  values;
 
-  Number = Number;
   constructor() {
+    
+    // Generate column array - we go column then row to
+    // maintain x,y dimension access to values
+    let xArray = new Array(this.width);
 
+    // Generate columns in the array of columns
+    for (let i = 0; i < this.width; i++) {
+      xArray[i] = new Array(this.height);
+    }
+
+    this.values = xArray;
+
+    // Fill the values array with a puzzle
+    this.generate();
   }
 
   handleRightClick(event: any) {
     event.preventDefault();
-    this.values = this.generate();
+    this.generate();
   }
 
-  generate():string {
+  generate() {
     let possibilities = [1,2,3,4,5,6,7,8,9];
 
-    // let xLine =
-    
-    let solvedBoard:string = "";
-    for (let i = 1; i <= (this.width * this.height); i++) {
-      solvedBoard += 
-      (Math.floor(Math.random() * possibilities.length) + 1)
-      .toString();
+    // Fill grid with random values
+    for (let i = 0; i < this.width; i++) {
+      for (let j = 0; j < this.height; j++) {
+        this.values[i][j] = 
+        (Math.floor(Math.random() * possibilities.length) + 1)
+        .toString();
+      }
     }
-
-    console.log(solvedBoard);
-    return solvedBoard;
   }
-
 }

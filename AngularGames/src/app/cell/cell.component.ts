@@ -7,9 +7,9 @@ import { Component, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
 })
 export class CellComponent implements OnInit {
   
-  Math = Math;
+  // Math = Math;
 
-  @Input() id:number;
+  @Input() id;
 
   @Input() initialValue:string;
   displayValue:String = "";
@@ -22,7 +22,7 @@ export class CellComponent implements OnInit {
   bottomBorderOn:boolean = true;
 
   ngOnInit(): void {
-    this.displayValue = this.initialValue.toString();
+    // this.displayValue = this.initialValue.toString();
   }
 
   ngOnChanges():void {
@@ -30,20 +30,15 @@ export class CellComponent implements OnInit {
     console.log("CHANGE");
   }
 
-  focus(event: MouseEvent) {
-    this.myDiv.nativeElement.focus();
+  focus(event: any) {
+    // this.myDiv.nativeElement.focus();
+    event.target.focus();
   }
 
   insertNumber(event: KeyboardEvent) {
     let number = parseInt(event.key);
     event.preventDefault();
     if (isNaN(number) || number < 0 || number > 9) {
-      // if (event.key == 'l') {
-      //   this.leftBorderOn = !this.leftBorderOn;
-      // }
-      // if (event.key == 'r') {
-      //   this.rightBorderOn = !this.rightBorderOn;
-      // }
       return;
     }
     this.displayValue = event.key.toString();
