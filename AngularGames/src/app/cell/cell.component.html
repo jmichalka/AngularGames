@@ -3,12 +3,12 @@
     (keydown)="insertNumber($event)" 
     contenteditable="true"
     [ngClass]="{
-        'leftBorder': leftBorderOn,
-        'rightBorder': rightBorderOn,
-        'topBorder': topBorderOn,
-        'bottomBorder': bottomBorderOn
+        'leftBorder': (id % 3 === 1),
+        'rightBorder': (id % 3 === 0),
+        'topBorder': (Math.ceil(id / 9) % 3 === 1),
+        'bottomBorder': (Math.ceil(id / 9) % 3 === 0)
     }"> 
     <div class="value">
-        {{displayValue}}
+        {{ displayValue }}
     </div>
 </div>

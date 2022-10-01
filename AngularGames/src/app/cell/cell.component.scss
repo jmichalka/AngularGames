@@ -1,6 +1,6 @@
 .cell {
     aspect-ratio: 1;
-    height: 50px;
+    height: 3em;
     background: white;
     display: flex;
     flex-direction: row;
@@ -11,37 +11,46 @@
     font-size: large;
     box-sizing: border-box;
     border: 1px black solid;
-    transition: color 0.5s;
-    border-radius: 5px;
+    // transition: color 0.5s;
+    // border-radius: 5px;
 
     // Use this to remove text highlighting. Might need to remove 
-    // user-select: none;  
+    user-select: none;  
+    // z-index: 2;
 }
 
 .leftBorder {
- border-left: 3px green solid;
+    border-left-width: 3px;
+    // color: blue;
 }
 
 .rightBorder {
-  border-right: 3px red solid;
+    border-right-width: 3px;
+    // color: red;
 }
 
 .topBorder {
-    border-top: 3px;
+    border-top-width: 3px;
+    // color: green;
 }
 
 .bottomBorder {
-    border-bottom: 3px gray solid;
+    border-bottom-width: 3px;
+    // color: purple;
 }
 
 .cell:hover {
-    background: black;
+    background: gray;
     color: white;
-    transform: scale(1.1);
+    // transform: scale(1.1);
+    cursor: pointer;
 }
 
 .value {
     font-size: large;
     font-weight: bolder;
     caret-color: transparent;
+
+    // This doesn't seem to be doing anything \/
+    user-select: none;
 }

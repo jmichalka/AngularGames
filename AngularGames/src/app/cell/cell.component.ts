@@ -7,7 +7,11 @@ import { Component, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
 })
 export class CellComponent implements OnInit {
   
-  @Input() initialValue: Number = 0;
+  Math = Math;
+
+  @Input() id:number;
+
+  @Input() initialValue:string;
   displayValue:String = "";
   
   @ViewChild("value") myDiv: ElementRef;
@@ -19,6 +23,11 @@ export class CellComponent implements OnInit {
 
   ngOnInit(): void {
     this.displayValue = this.initialValue.toString();
+  }
+
+  ngOnChanges():void {
+    this.displayValue = this.initialValue.toString();
+    console.log("CHANGE");
   }
 
   focus(event: MouseEvent) {

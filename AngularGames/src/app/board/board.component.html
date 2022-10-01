@@ -1,9 +1,14 @@
 
-<main class="board">
+<main class="board"
+    (contextmenu)="handleRightClick($event)"
+>
     <app-cell 
     *ngFor="let cell of [].constructor(height * width); 
     let i = index"
-    [initialValue]="i+1">
+    [id]="i+1"
+    [initialValue]="values[i]">
+
+    <!-- [initialValue]="i+1" -->
     </app-cell>
 </main>
 
