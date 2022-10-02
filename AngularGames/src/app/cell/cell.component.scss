@@ -1,14 +1,14 @@
 .cell {
     aspect-ratio: 1;
-    height: 3em;
-    background: white;
+    height: 2em;
+    background-color: white;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     color: black;
     font-weight: bolder;
-    font-size: large;
+    font-size: x-large;
     box-sizing: border-box;
     border: 1px black solid;
     // transition: color 0.5s;
@@ -16,7 +16,15 @@
 
     // Use this to remove text highlighting. Might need to remove 
     user-select: none;  
-    // z-index: 2;
+    
+    // Fun features
+    border-radius: 50%;
+    --translateX: 0px;
+    --translateY: 0px;
+    transform: translate(var(--translateX), var(--translateY));
+    transition: transform 1s;
+    text-shadow: rgba(0,0,0,0.5) 1px 1px 2px ;
+    color: white;
 }
 
 .leftBorder {
@@ -40,10 +48,14 @@
 }
 
 .cell:hover {
-    background: gray;
+    background-color: gray !important;
     color: white;
     // transform: scale(1.1);
     cursor: pointer;
+}
+
+.cell:focus {
+    outline: none;  //
 }
 
 .value {
