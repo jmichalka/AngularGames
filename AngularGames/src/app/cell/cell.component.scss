@@ -1,3 +1,5 @@
+// ---------- STATIC STYLES ----------
+
 .cell {
     aspect-ratio: 1;
     height: 2em;
@@ -22,10 +24,36 @@
     --translateX: 0px;
     --translateY: 0px;
     transform: translate(var(--translateX), var(--translateY));
-    transition: transform 1s;
+    // transition: transform 1s;
     text-shadow: rgba(0,0,0,0.5) 1px 1px 2px ;
     color: white;
 }
+
+.value {
+    font-size: large;
+    font-weight: bolder;
+    caret-color: transparent;
+
+    user-select: none;
+    pointer-events: none;
+}
+
+
+// ---------- EVENTS ----------
+
+.cell:hover {
+    background-color: gray !important;
+    color: white;
+    // transform: scale(1.1);
+    cursor: pointer;
+}
+
+.cell:focus {
+    outline: none;  //
+}
+
+
+// ---------- CONFIGURABLES ----------
 
 .leftBorder {
     border-left-width: 3px;
@@ -45,24 +73,4 @@
 .bottomBorder {
     border-bottom-width: 3px;
     // color: purple;
-}
-
-.cell:hover {
-    background-color: gray !important;
-    color: white;
-    // transform: scale(1.1);
-    cursor: pointer;
-}
-
-.cell:focus {
-    outline: none;  //
-}
-
-.value {
-    font-size: large;
-    font-weight: bolder;
-    caret-color: transparent;
-
-    // This doesn't seem to be doing anything \/
-    user-select: none;
 }

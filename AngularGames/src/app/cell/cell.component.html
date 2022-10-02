@@ -1,16 +1,19 @@
-<td #value class="cell" 
+<td #value class="cell"
+    draggable="true"
     (mouseover)="focus($event)" 
-    (keydown)="insertNumber($event)" 
+    (keydown)="insertNumber($event)"
+    (dragstart)="dragStartHandler($event)"
+    (drag)="dragHandler($event)"
     contenteditable="true"
     [ngClass]="{
-        'leftBorder': (id.x % 3 === 1),
-        'rightBorder': (id.x % 3 === 0),
-        'topBorder': (id.y % 3 === 1),
-        'bottomBorder': (id.y % 3 === 0)
+        'leftBorder': (id.x !== null && id.x % 3 === 1),
+        'rightBorder': (id.x !== null && id.x % 3 === 0),
+        'topBorder': (id.x !== null && id.y % 3 === 1),
+        'bottomBorder': (id.x !== null && id.y % 3 === 0)
     }"
-    [style.--translateX]="offsetX"
-    [style.--translateY]="offsetY"
     [style.background-color]="color">
+    <!-- [style.--translateX]="offsetOutX" -->
+    <!-- [style.--translateY]="offsetOutY" -->
     <div class="value">
         {{ displayValue }}
     </div>

@@ -40,7 +40,7 @@ export class BoardComponent {
     for (let i = 0; i < this.width; i++) {
       for (let j = 0; j < this.height; j++) {
         this.values[i][j] = 
-        (Math.floor(Math.random() * possibilities.length) + 1)
+        possibilities[(Math.floor(Math.random() * possibilities.length))]
         .toString();
       }
     }

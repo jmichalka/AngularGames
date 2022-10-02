@@ -1,0 +1,8 @@
+<main>
+    <app-cell
+        *ngFor="let cell of [].constructor(values.length); 
+            let i = index"
+        [id]="{ x: null, y: null }"
+        [initialValue]="values[i].toString()">
+    </app-cell>
+</main>
