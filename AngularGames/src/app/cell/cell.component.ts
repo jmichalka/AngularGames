@@ -21,14 +21,26 @@ export class CellComponent implements OnInit {
   topBorderOn:boolean = false;
   bottomBorderOn:boolean = true;
 
+  offsetX = '0px';
+  offsetY = '0px';
+  color = this.getRandomColor();
+
+
+// ---------- LIFECYCLE ----------
+
   ngOnInit(): void {
     // this.displayValue = this.initialValue.toString();
   }
 
   ngOnChanges():void {
     this.displayValue = this.initialValue.toString();
-    console.log("CHANGE");
+    this.offsetX = Math.floor(Math.random() * 10) + 'px';
+    this.offsetY = Math.floor(Math.random() * 10) + 'px';
+    
+    // console.log("CHANGE");
   }
+
+// ---------- EVENTS ----------
 
   focus(event: any) {
     // this.myDiv.nativeElement.focus();
@@ -43,4 +55,16 @@ export class CellComponent implements OnInit {
     }
     this.displayValue = event.key.toString();
   }
+
+
+  // ---------- UTILITIES ----------
+  getRandomColor() {
+    return (
+      "#" +
+      Math.floor(Math.random() * 16777216)
+        .toString(16)
+        .padStart(6, "0")
+    );
+  }
+
 }

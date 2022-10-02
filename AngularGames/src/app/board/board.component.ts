@@ -30,7 +30,7 @@ export class BoardComponent {
 
   handleRightClick(event: any) {
     event.preventDefault();
-    this.generate();
+    this.generate()
   }
 
   generate() {
