@@ -10,21 +10,14 @@ export class BoardComponent {
   width = 9;
   height = 9;
   values;
+  groupGridDim = 3;
 
 // ---------- LIFECYCLE ----------
 
   constructor() {
-    
-    // Generate column array - we go column then row to
-    // maintain x,y dimension access to values
-    this.values = new Array(this.width);
 
-    // Generate columns in the array of columns
-    for (let i = 0; i < this.width; i++) {
-      this.values[i] = new Array(this.height);
-    }
+    // this.generateBlank();
 
-    // Fill the values array with a puzzle
     // this.generateRandom();
     this.generateSudoku();
   }
@@ -33,10 +26,19 @@ export class BoardComponent {
 
   handleRightClick(event: any) {
     event.preventDefault();
-    this.generateRandom();
+    // this.generateRandom();
+    this.generateSudoku();
   }
 
 // ---------- METHODS ----------
+
+  generateBlank() {
+    this.values = new Array(this.width);
+
+    for (let i = 0; i < this.width; i++) {
+      this.values[i] = new Array(this.height);
+    }
+  }
 
   generateRandom() {
     let possibilities = [1,2,3,4,5,6,7,8,9];
@@ -52,13 +54,15 @@ export class BoardComponent {
   }
 
   generateSudoku() {
+    this.generateBlank();
+
     let possibilities = ['1','2','3','4','5','6','7','8','9'];
 
     // Fill the grid with Sudoku values
     for (let i = 0; i < this.width; i++) {
       for (let j = 0; j < this.height; j++) {
 
-        // console.log("This is for cell " + i + " , " + j);
+        console.log("This is for cell " + i + " , " + j);
         // Reset remaining possibilities
         let remaining = [...possibilities];
         // console.log("Setting remaining back to " + possibilities);
@@ -72,6 +76,7 @@ export class BoardComponent {
 
           if (index > -1) {
             remaining.splice(index, 1);
+            console.log("Removing " + val + " for up/down - Remaining " + remaining);
           }
         }
 
@@ -82,19 +87,32 @@ export class BoardComponent {
 
           if (index > -1) {
             remaining.splice(index, 1);
+            console.log("Removing " + val + " for left/right - Remaining " + remaining);
           }
         }
 
         // Group possibilities
-        // for (let g = 0; g < ) {
+        // Figure out what group this cell is in
+        let groupX = Math.floor(i / this.groupGridDim);
+        let groupY = Math.floor(j / this.groupGridDim);
+        console.log("Group - ", groupX, groupY);
 
-        // }
-
-
+        for (let f = groupX * this.groupGridDim; f < (groupX + 1) * this.groupGridDim; f++) {
+          for (let g = groupY * this.groupGridDim; g < (groupY + 1) * this.groupGridDim; g++) {
+            const val = this.values[f][g];
+            const index = remaining.indexOf(val);
+  
+            if (index > -1) {
+              remaining.splice(index, 1);
+              console.log("Removing " + val + " for group - Remaining " + remaining);
+            }
+          }
+        }
 
         // console.log(remaining);
         const validVal = remaining[(Math.floor(Math.random() * remaining.length))];
-        // console.log("Setting this cell to " + validVal);
+        console.log(remaining[(Math.floor(Math.random() * remaining.length))]);
+        console.log("Setting this cell to " + validVal);
 
         this.values[i][j] = validVal;
         
