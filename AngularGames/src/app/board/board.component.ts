@@ -86,6 +86,10 @@ export class BoardComponent {
         }
 
         // Group possibilities
+        for (let g = 0; g < ) {
+
+        }
+
 
 
         // console.log(remaining);

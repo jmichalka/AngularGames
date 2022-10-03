@@ -1,6 +1,7 @@
 // ---------- STATIC STYLES ----------
 
 .cell {
+    position: relative;
     aspect-ratio: 1;
     height: 2em;
     background-color: white;
@@ -20,10 +21,10 @@
     user-select: none;  
     
     // Fun features
-    border-radius: 50%;
-    --translateX: 0px;
-    --translateY: 0px;
-    transform: translate(var(--translateX), var(--translateY));
+    // border-radius: 50%;
+    // --translateX: 0px;
+    // --translateY: 0px;
+    // transform: translate(var(--translateX), var(--translateY));
     // transition: transform 1s;
     text-shadow: rgba(0,0,0,0.5) 1px 1px 2px ;
     color: white;
@@ -52,6 +53,21 @@
     outline: none;  //
 }
 
+// .cell::before {
+//     content: "4";
+//     position: absolute;
+//     left: 4px;
+//     top: 4px;
+//     font-size: small;
+// }
+
+// .cell::after {
+//     content: "6";
+//     position: absolute;
+//     right: 4px;
+//     top: 4px;
+//     font-size: small;
+// }
 
 // ---------- CONFIGURABLES ----------
 
