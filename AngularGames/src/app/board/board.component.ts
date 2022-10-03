@@ -33,7 +33,7 @@ export class BoardComponent {
 
   handleRightClick(event: any) {
     event.preventDefault();
-    this.generateRandom()
+    this.generateRandom();
   }
 
 // ---------- METHODS ----------
@@ -86,9 +86,9 @@ export class BoardComponent {
         }
 
         // Group possibilities
-        for (let g = 0; g < ) {
+        // for (let g = 0; g < ) {
 
-        }
+        // }
 
 
 
