@@ -35,13 +35,13 @@ export class CellComponent implements OnInit {
   constructor(private elRef: ElementRef) {}
 
   ngOnInit(): void {
-    this.displayValue = this.initialValue.toString();
+    this.displayValue = this.initialValue;
     this.color = this.getColorFromDigit(Number(this.initialValue));
-    console.log(this.color);
+    // console.log(this.color);
   }
 
   ngOnChanges():void {
-    this.displayValue = this.initialValue.toString();
+    this.displayValue = this.initialValue;
     // this.offsetX = Math.floor(Math.random() * 10);
     // this.offsetY = Math.floor(Math.random() * 10);
     this.updateOut();
