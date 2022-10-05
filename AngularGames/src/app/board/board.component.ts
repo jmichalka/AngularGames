@@ -26,12 +26,9 @@ export class BoardComponent {
 
   handleRightClick(event: any) {
     event.preventDefault();
-    // this.generateRandom();  
-    do {  
-      this.generateSudoku();
-      let isValid = this.checkSudoku();
-      console.log(isValid);
-    } while (this.checkSudoku() === false);
+    // this.generateRandom();
+    this.generateBruteForce(); 
+
   }
 
 // ---------- METHODS ----------
@@ -66,7 +63,7 @@ export class BoardComponent {
     for (let i = 0; i < this.width; i++) {
       for (let j = 0; j < this.height; j++) {
 
-        console.log("This is for cell " + i + " , " + j);
+        // console.log("This is for cell " + i + " , " + j);
         // Reset remaining possibilities
         let remaining = [...possibilities];
         // console.log("Setting remaining back to " + possibilities);
@@ -80,7 +77,7 @@ export class BoardComponent {
 
           if (index > -1) {
             remaining.splice(index, 1);
-            console.log("Removing " + val + " for up/down - Remaining " + remaining);
+            // console.log("Removing " + val + " for up/down - Remaining " + remaining);
           }
         }
 
@@ -91,7 +88,7 @@ export class BoardComponent {
 
           if (index > -1) {
             remaining.splice(index, 1);
-            console.log("Removing " + val + " for left/right - Remaining " + remaining);
+            // console.log("Removing " + val + " for left/right - Remaining " + remaining);
           }
         }
 
@@ -99,7 +96,7 @@ export class BoardComponent {
         // Figure out what group this cell is in
         let groupX = Math.floor(i / this.groupGridDim);
         let groupY = Math.floor(j / this.groupGridDim);
-        console.log("Group - ", groupX, groupY);
+        // console.log("Group - ", groupX, groupY);
 
         for (let f = groupX * this.groupGridDim; f < (groupX + 1) * this.groupGridDim; f++) {
           for (let g = groupY * this.groupGridDim; g < (groupY + 1) * this.groupGridDim; g++) {
@@ -108,15 +105,15 @@ export class BoardComponent {
   
             if (index > -1) {
               remaining.splice(index, 1);
-              console.log("Removing " + val + " for group - Remaining " + remaining);
+              // console.log("Removing " + val + " for group - Remaining " + remaining);
             }
           }
         }
 
         // Enter a random valid remaining value
         const validVal = remaining[(Math.floor(Math.random() * remaining.length))];
-        console.log(remaining[(Math.floor(Math.random() * remaining.length))]);
-        console.log("Setting this cell to " + validVal);
+        // console.log(remaining[(Math.floor(Math.random() * remaining.length))]);
+        // console.log("Setting this cell to " + validVal);
 
         this.values[i][j] = validVal;
         
@@ -127,6 +124,17 @@ export class BoardComponent {
       }
     }
 
+  }
+
+  generateBruteForce() {
+    let count = 0;
+    do {  
+      this.generateSudoku();
+      let isValid = this.checkSudoku();
+      console.log(isValid);
+      count++;
+    } while (this.checkSudoku() === false);
+    console.log(count);
   }
 
   checkSudoku():boolean {
