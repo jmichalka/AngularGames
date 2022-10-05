@@ -134,7 +134,7 @@ export class BoardComponent {
       console.log(isValid);
       count++;
     } while (this.checkSudoku() === false);
-    console.log(count);
+    console.log("Puzzles checked - " + count);
   }
 
   checkSudoku():boolean {

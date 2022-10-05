@@ -17,6 +17,8 @@ import { ShellComponent } from './shell/shell.component';
 const components = [ShellComponent];
 
 const modules = [
+  CommonModule,
+  RouterModule,
   MatButtonModule,
   MatToolbarModule,
   MatIconModule,
