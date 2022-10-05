@@ -26,8 +26,12 @@ export class BoardComponent {
 
   handleRightClick(event: any) {
     event.preventDefault();
-    // this.generateRandom();
-    this.generateSudoku();
+    // this.generateRandom();  
+    do {  
+      this.generateSudoku();
+      let isValid = this.checkSudoku();
+      console.log(isValid);
+    } while (this.checkSudoku() === false);
   }
 
 // ---------- METHODS ----------
@@ -109,7 +113,7 @@ export class BoardComponent {
           }
         }
 
-        // console.log(remaining);
+        // Enter a random valid remaining value
         const validVal = remaining[(Math.floor(Math.random() * remaining.length))];
         console.log(remaining[(Math.floor(Math.random() * remaining.length))]);
         console.log("Setting this cell to " + validVal);
@@ -123,6 +127,17 @@ export class BoardComponent {
       }
     }
 
+  }
+
+  checkSudoku():boolean {
+
+    for (let i = 0; i < this.width; i++) {
+      for (let j = 0; j < this.height; j++) {
+        if (this.values[i][j] === undefined) return false;
+      }
+    }
+
+    return true;
   }
 
 }

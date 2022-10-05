@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { CellComponent } from './cell/cell.component';
 import { BoardComponent } from './board/board.component';
 import { PaletteComponent } from './palette/palette.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { PaletteComponent } from './palette/palette.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
