@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatSliderModule } from '@angular/material/slider';
 
 @Component({
@@ -8,6 +8,9 @@ import { MatSliderModule } from '@angular/material/slider';
 })
 
 export class BoardComponent {
+
+  @Input() recommendedCellSize;
+
   width = 9;
   height = 9;
   values;

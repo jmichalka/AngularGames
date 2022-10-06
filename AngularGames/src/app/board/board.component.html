@@ -5,7 +5,7 @@
         *ngFor="let cell of values[i]; let j = index"
             [id]="{ x: i + 1, y: j + 1 }"
             [initialValue]="values[i][j]"
-            [cellSize]="50">
+            [cellSize]=recommendedCellSize>
         </app-cell>
     </tr>
 </table>

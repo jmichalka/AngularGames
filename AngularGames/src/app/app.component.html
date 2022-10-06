@@ -1,17 +1,22 @@
 <app-shell>
+    <div class="configuration">
+        <mat-slider 
+        [thumbLabel]="thumbLabel" 
+        [min]="40" 
+        [max]="120" 
+        [step]="5" 
+        [(ngModel)]=value>
+    </mat-slider>
+    </div>
 
-    <main class="main">
-        <div class="toolbar-area">
-            <!-- Put toolbars here -->
-            <mat-slider></mat-slider>
-        </div>
-        <app-board></app-board>
+    <main class="main">    
+        <app-board class="test" [recommendedCellSize]=value></app-board>
         <div class="toolbar-area">
             <app-palette>
             
             </app-palette>
         </div>
     </main>
-
+    
     <router-outlet></router-outlet>
 </app-shell>

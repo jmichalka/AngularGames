@@ -11,16 +11,39 @@
 }
 
 .main {
+    border: solid green 1px;
     display: flex;
     justify-content: center;
+    gap: 30px;
+}
+
+// app-board {
+//     justify-content: center;
+//     // display: flex;
+//     order: 1;
+// }
+
+.test {
+    justify-content: center;
+    order: 1;
 }
 
 .toolbar-area {
     border: solid red 1px;
+    // display: flex-end;
+    // justify-content: right;
+    align-items: center;
+    // flex-grow: 0.2;
+    width: 20 px;
+    height: 100 px;
+    order: 2;
+}
+
+
+
+.configuration {
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-grow: 1;
 }
 
 mat-slider {

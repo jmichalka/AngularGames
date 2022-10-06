@@ -9,4 +9,7 @@ export class AppComponent {
   title = 'AngularGames';
   x:Number = 9;
   y:Number = 9;
+
+  value = 50;
+  thumbLabel = true;
 }
