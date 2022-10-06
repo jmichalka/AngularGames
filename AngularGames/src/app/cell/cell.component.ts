@@ -10,6 +10,7 @@ export class CellComponent implements OnInit {
   // Math = Math;
 
   @Input() id;
+  @Input() cellSize;
 
   @Input() initialValue:string;
   displayValue:String = "";

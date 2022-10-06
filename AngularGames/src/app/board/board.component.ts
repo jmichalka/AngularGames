@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSliderModule } from '@angular/material/slider';
 
 @Component({
   selector: 'app-board',
@@ -11,6 +12,7 @@ export class BoardComponent {
   height = 9;
   values;
   groupGridDim = 3;
+  value;
 
 // ---------- LIFECYCLE ----------
 

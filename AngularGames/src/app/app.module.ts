@@ -8,6 +8,7 @@ import { BoardComponent } from './board/board.component';
 import { PaletteComponent } from './palette/palette.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SharedModule } from './shared/shared.module';
     PaletteComponent
   ],
   imports: [
+    MatSliderModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

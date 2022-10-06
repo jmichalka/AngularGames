@@ -1,12 +1,11 @@
-
 <table class="board"
-    (contextmenu)="handleRightClick($event)"
->
+    (contextmenu)="handleRightClick($event)">
     <tr *ngFor="let col of values; let i = index">
         <app-cell 
         *ngFor="let cell of values[i]; let j = index"
             [id]="{ x: i + 1, y: j + 1 }"
-            [initialValue]="values[i][j]">
+            [initialValue]="values[i][j]"
+            [cellSize]="50">
         </app-cell>
     </tr>
 </table>

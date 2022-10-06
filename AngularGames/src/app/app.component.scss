@@ -16,9 +16,13 @@
 }
 
 .toolbar-area {
-    // border: solid red 1px;
+    border: solid red 1px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+}
+
+mat-slider {
+    width: 200px;
 }
