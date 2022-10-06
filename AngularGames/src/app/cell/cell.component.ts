@@ -56,16 +56,17 @@ export class CellComponent implements OnInit {
   }
 
   insertNumber(event: KeyboardEvent) {
-    let number = parseInt(event.key);
     event.preventDefault();
+    let number = parseInt(event.key);
     if (isNaN(number) || number < 0 || number > 9) {
       return;
     }
     this.displayValue = event.key.toString();
+    this.color = this.getColorFromDigit(number);
   }
 
   dragStartHandler(event: any) {
-    // event.preventDefault();
+    event.preventDefault();
     // this.boardOffsetX = 
     //   this.elRef.nativeElement.parentElement.offsetLeft
     //   + this.elRef.nativeElement.parentElement.parentElement.offsetLeft;
@@ -96,7 +97,7 @@ export class CellComponent implements OnInit {
   }
 
   getColorFromDigit(val:number):string {
-    return `hsl(0, 0%, ${Math.floor(this.mapNumber(val, 0, 9, 0, 75))}%)`;
+    return `hsl(210, 10%, ${Math.floor(this.mapNumber(val, 0, 9, 5, 75))}%)`;
   }
 
   mapNumber(val:number, inMin:number, inMax:number,

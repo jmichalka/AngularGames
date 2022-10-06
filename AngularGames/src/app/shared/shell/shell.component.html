@@ -30,15 +30,15 @@
   
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        <span class="logo" routerLink="/">sudo --ku</span>
+        <span class="logo" routerLink="/">
+          <span>sudo </span><span class="grayed">--ku</span><span class="blink">_</span>
+        </span>
   
         <span class="fill-space"></span>
         <div *ngIf="!(isHandset$ | async)">
-          <a mat-button routerLink="/kanban">🍱 Kanban Demo</a>
-          <a mat-button routerLink="/customers">⚡ SSR Demo</a>
-  
-          <a mat-button routerLink="/login">🔑 Login</a>
-  
+          <a mat-button routerLink="/tutorial">How to Play</a>
+          <a mat-button routerLink="/account">My Account</a>
+          <a mat-button routerLink="/login">Login</a>
         </div>
   
         <!-- DROPDOWN MENU -->
