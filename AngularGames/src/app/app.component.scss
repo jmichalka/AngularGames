@@ -11,20 +11,24 @@
 }
 
 .main {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     justify-content: center;
 }
 
 .sidebars {
+    display: flex;
     flex-grow: 1;
     border: 1px green solid;
+
 }
 
 .toolbar-area {
     border: solid red 1px;
     align-items: center;
-    width: 20 px;
-    height: 200 px;
+    margin-left: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .mat-slider-configuration {

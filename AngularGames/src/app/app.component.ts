@@ -12,4 +12,10 @@ export class AppComponent {
 
   value = 50;
   thumbLabel = true;
+
+  handleSliderChange(event:any) {
+    console.log(event.value);
+    this.value = event.value;
+  }
+
 }
