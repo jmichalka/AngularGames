@@ -11,37 +11,23 @@
 }
 
 .main {
-    border: solid green 1px;
     display: flex;
     justify-content: center;
-    gap: 30px;
 }
 
-// app-board {
-//     justify-content: center;
-//     // display: flex;
-//     order: 1;
-// }
-
-.test {
-    justify-content: center;
-    order: 1;
+.sidebars {
+    flex-grow: 1;
+    border: 1px green solid;
 }
 
 .toolbar-area {
     border: solid red 1px;
-    // display: flex-end;
-    // justify-content: right;
     align-items: center;
-    // flex-grow: 0.2;
     width: 20 px;
-    height: 100 px;
-    order: 2;
+    height: 200 px;
 }
 
-
-
-.configuration {
+.mat-slider-configuration {
     display: flex;
     justify-content: center;
 }

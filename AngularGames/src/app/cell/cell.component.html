@@ -11,7 +11,7 @@
         'topBorder': (id.x !== null && id.y % 3 === 1),
         'bottomBorder': (id.x !== null && id.y % 3 === 0)
     }"
-    [ngStyle]="{'width': cellSize + 'px', 'height': cellSize + 'px'}"
+    [ngStyle]="{'--cellSize': cellSize + 'px'}"
     [style.background-color]="color">
     <!-- [style.--translateX]="offsetOutX" -->
     <!-- [style.--translateY]="offsetOutY" -->

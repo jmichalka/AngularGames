@@ -1,5 +1,5 @@
 <app-shell>
-    <div class="configuration">
+    <div class="mat-slider-configuration">
         <mat-slider 
         [thumbLabel]="thumbLabel" 
         [min]="40" 
@@ -9,13 +9,16 @@
     </mat-slider>
     </div>
 
-    <main class="main">    
+    <main class="main">
+        <div class="sidebars"></div>    
         <app-board class="test" [recommendedCellSize]=value></app-board>
-        <div class="toolbar-area">
-            <app-palette>
-            
-            </app-palette>
-        </div>
+        <div class="sidebars">
+            <div class="toolbar-area">
+                <app-palette>
+                
+                </app-palette>
+            </div>
+        </div>    
     </main>
     
     <router-outlet></router-outlet>
