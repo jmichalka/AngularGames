@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "sudokuproject-5af75": {
+      "hosting": {
+        "AngularGames": [
+          "sudokuproject-5af75"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "sudokuproject-5af75"
+  }
+}

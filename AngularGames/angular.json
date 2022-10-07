@@ -100,6 +100,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "AngularGames:build:production",
+            "firebaseProject": "sudokuproject-5af75",
+            "firebaseHostingSite": "sudokuproject-5af75"
+          }
         }
       }
     }
