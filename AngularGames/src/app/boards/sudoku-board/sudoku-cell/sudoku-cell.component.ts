@@ -1,11 +1,11 @@
 import { Component, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-cell',
-  templateUrl: './cell.component.html',
-  styleUrls: ['./cell.component.scss']
+  selector: 'app-sudoku-cell',
+  templateUrl: './sudoku-cell.component.html',
+  styleUrls: ['./sudoku-cell.component.scss']
 })
-export class CellComponent implements OnInit {
+export class SudokuCellComponent implements OnInit {
 
   @Input() id;
   @Input() cellSize;

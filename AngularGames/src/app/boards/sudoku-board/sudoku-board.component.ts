@@ -2,14 +2,27 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatSliderModule } from '@angular/material/slider';
 
 @Component({
-  selector: 'app-board',
-  templateUrl: './board.component.html',
-  styleUrls: ['./board.component.scss']
+  selector: 'app-sudoku-board',
+  templateUrl: './sudoku-board.component.html',
+  styleUrls: ['./sudoku-board.component.scss']
 })
+export class SudokuBoardComponent implements OnInit {
 
-export class BoardComponent {
 
   @Input() recommendedCellSize;
+
+  title = 'AngularGames';
+  x:Number = 9;
+  y:Number = 9;
+
+  sliderValue = 50;
+  thumbLabel = true;
+
+  handleSliderChange(event:any) {
+    console.log(event.value);
+    this.sliderValue = event.value;
+  }
+
 
   width = 9;
   height = 9;
@@ -25,6 +38,10 @@ export class BoardComponent {
 
     // this.generateRandom();
     this.generateSudoku();
+  }
+
+  ngOnInit(): void {
+      
   }
 
 // ---------- EVENTS ----------

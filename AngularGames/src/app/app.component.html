@@ -1,25 +1,3 @@
-<app-shell>
-    <div class="mat-slider-configuration">
-        <mat-slider 
-        [thumbLabel]="thumbLabel" 
-        [min]="40" 
-        [max]="120" 
-        (input)="handleSliderChange($event)"
-        [(ngModel)]=value>
-    </mat-slider>
-    </div>
-
-    <main class="main">
-        <div class="sidebars"></div>    
-        <app-board class="test" [recommendedCellSize]=value></app-board>
-        <div class="sidebars">
-            <div class="toolbar-area">
-                <app-palette>
-                
-                </app-palette>
-            </div>
-        </div>    
-    </main>
-    
+<app-shell>    
     <router-outlet></router-outlet>
 </app-shell>

@@ -14,7 +14,13 @@ import { FormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth'
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { HomePageComponent } from './home-page/home-page.component';
+import { SudokuBoardComponent } from './boards/sudoku-board/sudoku-board.component';
+import { ChessBoardComponent } from './boards/chess-board/chess-board.component';
+import { BoggleBoardComponent } from './boards/boggle-board/boggle-board.component';
+import { CrosswordBoardComponent } from './boards/crossword-board/crossword-board.component';
+import { SudokuCellComponent } from './boards/sudoku-board/sudoku-cell/sudoku-cell.component';
 
 
 @NgModule({
@@ -22,7 +28,13 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth'
     AppComponent,
     CellComponent,
     BoardComponent,
-    PaletteComponent
+    PaletteComponent,
+    HomePageComponent,
+    SudokuBoardComponent,
+    ChessBoardComponent,
+    BoggleBoardComponent,
+    CrosswordBoardComponent,
+    SudokuCellComponent,
   ],
   imports: [
     MatSliderModule,

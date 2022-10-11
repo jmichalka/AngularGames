@@ -1,0 +1,26 @@
+<main class="main">
+    <table class="board"
+        (contextmenu)="handleRightClick($event)">
+        <tr *ngFor="let col of values; let i = index">
+            <app-cell 
+            *ngFor="let cell of values[i]; let j = index"
+                [id]="{ x: i + 1, y: j + 1 }"
+                [initialValue]="values[i][j]"
+                [cellSize]=sliderValue>
+            </app-cell>
+        </tr>
+     </table>
+    <mat-slider
+        class="mat-slider-configuration toolbar-top"
+        [thumbLabel]="thumbLabel" 
+        [min]="40" 
+        [max]="120" 
+        (input)="handleSliderChange($event)"
+        [(ngModel)]=sliderValue>
+    </mat-slider>
+    <div class="toolbar-right">
+        <app-palette></app-palette>
+    </div>  
+    <div class="toolbar-left">TOOLBAR AREA</div>
+    <div class="toolbar-bottom">TOOLBAR AREA</div>
+</main>
