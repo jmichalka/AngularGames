@@ -35,7 +35,7 @@
 
 .value {
     position: absolute;
-    font-size: large;
+    font-size: x-large;
     font-weight: bolder;
     caret-color: transparent;
 
@@ -43,10 +43,21 @@
     pointer-events: none;
 }
 
-.possible-value {
+.possible-values {
     position: absolute;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    font-size: small;
 }
 
+.text-center {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 // ---------- EVENTS ----------
 
 .cell:hover {

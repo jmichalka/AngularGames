@@ -29,9 +29,9 @@ export class SudokuBoardComponent implements OnInit {
   constructor() {
 
     // this.generateBlank();
-
     // this.generateRandom();
-    this.generateSudoku();
+    // this.generateSudoku();
+    this.generateBruteForce();
   }
 
   ngOnInit(): void {

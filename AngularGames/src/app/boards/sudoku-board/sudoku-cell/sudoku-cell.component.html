@@ -13,12 +13,14 @@
     }"
     [ngStyle]="{'--cellSize': size + 'px'}"
     [style.background-color]="color">
-    <!-- [style.--translateX]="offsetOutX" -->
-    <!-- [style.--translateY]="offsetOutY" -->
+    <div class="possible-values">
+        <div 
+        *ngFor="let val of possibleValues; let i = index"
+        class="text-center">
+            {{ possibleValues[i] }}
+        </div>
+    </div>
     <div class="value">
         {{ displayValue }}
-    </div>
-    <div class="possible-values">
-        | |
     </div>
 </td>

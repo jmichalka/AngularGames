@@ -13,6 +13,7 @@ export class SudokuCellComponent implements OnInit {
   // Values
   @Input() promptValue:Number;
   guessValue:Number;
+  possibleValues: number[] = [1,2,3,4,5,6,7,8,9];
   displayValue:String = "";
   @ViewChild("value") myDiv: ElementRef;
 
