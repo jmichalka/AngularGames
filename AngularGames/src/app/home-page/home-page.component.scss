@@ -1,0 +1,30 @@
+.title {
+    text-align: center;
+    margin: 1em;
+    // border: solid green 1px;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
+.game-image {
+    width: 200px;
+    margin: 0.25em;
+    border: solid gray 1px;
+    // box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+mat-card {
+    margin: 1em;
+    transition: all 0.15s ease-out;
+}
+
+mat-card:hover {
+    transform: scale(1.1);
+    
+}

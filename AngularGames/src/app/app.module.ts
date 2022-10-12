@@ -21,6 +21,7 @@ import { ChessBoardComponent } from './boards/chess-board/chess-board.component'
 import { BoggleBoardComponent } from './boards/boggle-board/boggle-board.component';
 import { CrosswordBoardComponent } from './boards/crossword-board/crossword-board.component';
 import { SudokuCellComponent } from './boards/sudoku-board/sudoku-cell/sudoku-cell.component';
+import { SliderBoardComponent } from './boards/slider-board/slider-board.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { SudokuCellComponent } from './boards/sudoku-board/sudoku-cell/sudoku-ce
     BoggleBoardComponent,
     CrosswordBoardComponent,
     SudokuCellComponent,
+    SliderBoardComponent,
   ],
   imports: [
     MatSliderModule,

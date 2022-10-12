@@ -7,44 +7,35 @@ import { Component, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
 })
 export class SudokuCellComponent implements OnInit {
 
+  // Management
   @Input() id;
-  @Input() cellSize;
 
-  @Input() initialValue:string;
+  // Values
+  @Input() promptValue:Number;
+  guessValue:Number;
   displayValue:String = "";
-  
   @ViewChild("value") myDiv: ElementRef;
 
+  // Styling
+  @Input() size;
   leftBorderOn:boolean = false;
   rightBorderOn:boolean = false;
   topBorderOn:boolean = false;
   bottomBorderOn:boolean = false;
-
-  offsetX = 0;
-  offsetY = 0;
-  boardOffsetX = 0;
-  boardOffsetY = 0;
-  offsetOutX = '0px';
-  offsetOutY = '0px';
   color = "white";
-
 
 // ---------- LIFECYCLE ----------
 
   constructor(private elRef: ElementRef) {}
 
   ngOnInit(): void {
-    this.displayValue = this.initialValue;
-    this.color = this.getColorFromDigit(Number(this.initialValue));
+    this.displayValue = this.promptValue.toString();
+    this.color = this.getColorFromDigit(Number(this.promptValue));
     // console.log(this.color);
   }
 
   ngOnChanges():void {
-    this.displayValue = this.initialValue;
-    // this.offsetX = Math.floor(Math.random() * 10);
-    // this.offsetY = Math.floor(Math.random() * 10);
-    this.updateOut();
-    // console.log("CHANGE");
+    this.displayValue = this.promptValue.toString();
   }
 
 // ---------- EVENTS ----------
@@ -66,27 +57,18 @@ export class SudokuCellComponent implements OnInit {
 
   dragStartHandler(event: any) {
     event.preventDefault();
-    // this.boardOffsetX = 
-    //   this.elRef.nativeElement.parentElement.offsetLeft
-    //   + this.elRef.nativeElement.parentElement.parentElement.offsetLeft;
-    // this.boardOffsetY = 
-    //   this.elRef.nativeElement.parentElement.parentElement.offsetTop;
   }
 
   dragHandler(event: any) {
-    // this.offsetX = event.clientX - this.boardOffsetX;
-    // this.offsetY = event.clientY - this.boardOffsetY;
-    // this.updateOut();
+
   }
 
   dragEndHandler(event: any) {
-    // this.offsetX = 0;
-    // this.offsetY = 0;
-    // this.updateOut();
+
   }
 
   // ---------- UTILITIES ----------
-  getRandomColor() {
+  private getRandomColor() {
     return (
       "#" +
       Math.floor(Math.random() * 16777216)
@@ -95,18 +77,13 @@ export class SudokuCellComponent implements OnInit {
     );
   }
 
-  getColorFromDigit(val:number):string {
+  private getColorFromDigit(val:number):string {
     return `hsl(210, 10%, ${Math.floor(this.mapNumber(val, 0, 9, 5, 75))}%)`;
   }
 
-  mapNumber(val:number, inMin:number, inMax:number,
+  private mapNumber(val:number, inMin:number, inMax:number,
     outMin:number, outMax:number) {
       return (val - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
     }
-
-  updateOut() {
-    this.offsetOutX = this.offsetX + 'px';
-    this.offsetOutY = this.offsetY + 'px';
-  }
 
 }

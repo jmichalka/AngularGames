@@ -11,18 +11,12 @@ export class SudokuBoardComponent implements OnInit {
 
   @Input() recommendedCellSize;
 
-  title = 'AngularGames';
-  x:Number = 9;
-  y:Number = 9;
+  // title = 'AngularGames';
+  // x:Number = 9;
+  // y:Number = 9;
 
-  sliderValue = 50;
+  sliderValue = 60;
   thumbLabel = true;
-
-  handleSliderChange(event:any) {
-    console.log(event.value);
-    this.sliderValue = event.value;
-  }
-
 
   width = 9;
   height = 9;
@@ -50,7 +44,11 @@ export class SudokuBoardComponent implements OnInit {
     event.preventDefault();
     // this.generateRandom();
     this.generateBruteForce(); 
+  }
 
+    handleSliderChange(event:any) {
+    console.log(event.value);
+    this.sliderValue = event.value;
   }
 
 // ---------- METHODS ----------
@@ -79,7 +77,7 @@ export class SudokuBoardComponent implements OnInit {
   generateSudoku() {
     this.generateBlank();
 
-    let possibilities = ['1','2','3','4','5','6','7','8','9'];
+    let possibilities = [1,2,3,4,5,6,7,8,9];
 
     // Fill the grid with Sudoku values
     for (let i = 0; i < this.width; i++) {

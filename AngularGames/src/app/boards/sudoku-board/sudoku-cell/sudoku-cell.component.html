@@ -11,11 +11,14 @@
         'topBorder': (id.x !== null && id.y % 3 === 1),
         'bottomBorder': (id.x !== null && id.y % 3 === 0)
     }"
-    [ngStyle]="{'--cellSize': cellSize + 'px'}"
+    [ngStyle]="{'--cellSize': size + 'px'}"
     [style.background-color]="color">
     <!-- [style.--translateX]="offsetOutX" -->
     <!-- [style.--translateY]="offsetOutY" -->
     <div class="value">
         {{ displayValue }}
+    </div>
+    <div class="possible-values">
+        | |
     </div>
 </td>

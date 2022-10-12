@@ -34,6 +34,7 @@
 }
 
 .value {
+    position: absolute;
     font-size: large;
     font-weight: bolder;
     caret-color: transparent;
@@ -42,6 +43,9 @@
     pointer-events: none;
 }
 
+.possible-value {
+    position: absolute;
+}
 
 // ---------- EVENTS ----------
 

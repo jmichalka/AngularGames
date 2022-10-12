@@ -4,6 +4,7 @@ import { BoardComponent } from './board/board.component';
 import { BoggleBoardComponent } from './boards/boggle-board/boggle-board.component';
 import { ChessBoardComponent } from './boards/chess-board/chess-board.component';
 import { CrosswordBoardComponent } from './boards/crossword-board/crossword-board.component';
+import { SliderBoardComponent } from './boards/slider-board/slider-board.component';
 import { SudokuBoardComponent } from './boards/sudoku-board/sudoku-board.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'crossword', component: CrosswordBoardComponent },
   { path: 'boggle', component: BoggleBoardComponent },
   { path: 'chess', component: ChessBoardComponent },
+  { path: 'slider', component: SliderBoardComponent },
 ];
 
 @NgModule({

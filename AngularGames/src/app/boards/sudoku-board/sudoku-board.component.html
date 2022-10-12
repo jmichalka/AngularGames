@@ -1,17 +1,20 @@
 <main class="main">
+    <!-- Main Board -->
     <table class="board"
         (contextmenu)="handleRightClick($event)">
         <tr *ngFor="let col of values; let i = index">
-            <app-cell 
+            <app-sudoku-cell 
             *ngFor="let cell of values[i]; let j = index"
                 [id]="{ x: i + 1, y: j + 1 }"
-                [initialValue]="values[i][j]"
-                [cellSize]=sliderValue>
-            </app-cell>
+                [promptValue]="values[i][j]"
+                [size]=sliderValue>
+            </app-sudoku-cell>
         </tr>
      </table>
+
+     <!-- Other toolbars -->
     <mat-slider
-        class="mat-slider-configuration toolbar-top"
+        class="toolbar-top"
         [thumbLabel]="thumbLabel" 
         [min]="40" 
         [max]="120" 
@@ -21,6 +24,6 @@
     <div class="toolbar-right">
         <app-palette></app-palette>
     </div>  
-    <div class="toolbar-left">TOOLBAR AREA</div>
-    <div class="toolbar-bottom">TOOLBAR AREA</div>
+    <div class="toolbar-left">//TOOLBAR AREA//</div>
+    <div class="toolbar-bottom">//TOOLBAR AREA//</div>
 </main>
