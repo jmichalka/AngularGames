@@ -7,6 +7,8 @@
             *ngFor="let cell of values[i]; let j = index"
                 [id]="{ x: i + 1, y: j + 1 }"
                 [promptValue]="values[i][j]"
+                [possibleValues]="values[i][j]"
+                (collapseEvent)="collapseCell($event)"
                 [size]=sliderValue>
             </app-sudoku-cell>
         </tr>

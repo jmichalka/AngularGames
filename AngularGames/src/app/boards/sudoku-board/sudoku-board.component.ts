@@ -8,7 +8,6 @@ import { MatSliderModule } from '@angular/material/slider';
 })
 export class SudokuBoardComponent implements OnInit {
 
-
   @Input() recommendedCellSize;
 
   // title = 'AngularGames';
@@ -22,16 +21,16 @@ export class SudokuBoardComponent implements OnInit {
   height = 9;
   values;
   groupGridDim = 3;
-  value;
 
+  possibleValues: Number[] = [1,2,3,4,5,6,7,8,9];
 // ---------- LIFECYCLE ----------
 
   constructor() {
 
-    // this.generateBlank();
+    this.generateBlank();
     // this.generateRandom();
     // this.generateSudoku();
-    this.generateBruteForce();
+    // this.generateBruteForce();
   }
 
   ngOnInit(): void {
@@ -43,12 +42,18 @@ export class SudokuBoardComponent implements OnInit {
   handleRightClick(event: any) {
     event.preventDefault();
     // this.generateRandom();
-    this.generateBruteForce(); 
+    // this.generateBruteForce(); 
   }
 
     handleSliderChange(event:any) {
     console.log(event.value);
     this.sliderValue = event.value;
+  }
+
+  collapseCell(input: any) {
+    // console.log(this.values[input.x][input.y]);
+    this.values[input.x - 1][input.y - 1] = [input.value];
+    // console.log(this.values[input.x][input.y]);
   }
 
 // ---------- METHODS ----------
@@ -58,7 +63,11 @@ export class SudokuBoardComponent implements OnInit {
 
     for (let i = 0; i < this.width; i++) {
       this.values[i] = new Array(this.height);
+      for (let j=0; j < this.height; j++) {
+        this.values[i][j] = [...this.possibleValues];
+      }
     }
+    console.log(this.values);
   }
 
   generateRandom() {

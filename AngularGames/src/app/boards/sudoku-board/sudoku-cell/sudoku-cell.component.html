@@ -13,14 +13,15 @@
     }"
     [ngStyle]="{'--cellSize': size + 'px'}"
     [style.background-color]="color">
-    <div class="possible-values">
+    <div class="possible-value-container">
         <div 
         *ngFor="let val of possibleValues; let i = index"
-        class="text-center">
-            {{ possibleValues[i] }}
+        class="possible-value"
+        (click)="collapseValue($event)">
+            <span class="spanny">{{ possibleValues[i] }}</span>
         </div>
     </div>
     <div class="value">
-        {{ displayValue }}
+        <!-- {{ displayValue }} -->
     </div>
 </td>

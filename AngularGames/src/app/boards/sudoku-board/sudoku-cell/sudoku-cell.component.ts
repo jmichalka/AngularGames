@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-sudoku-cell',
@@ -11,11 +11,14 @@ export class SudokuCellComponent implements OnInit {
   @Input() id;
 
   // Values
-  @Input() promptValue:Number;
+  @Input() promptValue: number | undefined;
+  @Input() possibleValues: number[] = [0];
   guessValue:Number;
-  possibleValues: number[] = [1,2,3,4,5,6,7,8,9];
   displayValue:String = "";
   @ViewChild("value") myDiv: ElementRef;
+
+  // Create an event when the value is collapsed
+  @Output() collapseEvent = new EventEmitter<object>();
 
   // Styling
   @Input() size;
@@ -66,6 +69,14 @@ export class SudokuCellComponent implements OnInit {
 
   dragEndHandler(event: any) {
 
+  }
+
+  collapseValue(event: any) {
+    this.collapseEvent.emit({
+      x: this.id.x,
+      y: this.id.y,
+      value: Number(event.target.innerText),
+    });
   }
 
   // ---------- UTILITIES ----------
