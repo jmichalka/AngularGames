@@ -1,27 +1,39 @@
-<td #value class="cell"
-    draggable="true"
-    (mouseover)="focus($event)" 
-    (keydown)="insertNumber($event)"
-    (dragstart)="dragStartHandler($event)"
-    (drag)="dragHandler($event)"
-    contenteditable="true"
+<td
+  #value
+  class="cell"
+  draggable="true"
+  (mouseover)="focus($event)"
+  (keydown)="insertNumber($event)"
+  (dragstart)="dragStartHandler($event)"
+  (drag)="dragHandler($event)"
+  contenteditable="true"
+  [ngClass]="{
+    leftBorder: id.x !== null && id.x % 3 === 1,
+    rightBorder: id.x !== null && id.x % 3 === 0,
+    topBorder: id.x !== null && id.y % 3 === 1,
+    bottomBorder: id.x !== null && id.y % 3 === 0
+  }"
+  [ngStyle]="{ '--cellSize': size + 'px' }"
+  [style.background-color]="color"
+>
+  <div
+    class="possible-value-container"
     [ngClass]="{
-        'leftBorder': (id.x !== null && id.x % 3 === 1),
-        'rightBorder': (id.x !== null && id.x % 3 === 0),
-        'topBorder': (id.x !== null && id.y % 3 === 1),
-        'bottomBorder': (id.x !== null && id.y % 3 === 0)
+      single: possibleValues.length === 1,
+      multiple: possibleValues.length > 1
     }"
-    [ngStyle]="{'--cellSize': size + 'px'}"
-    [style.background-color]="color">
-    <div class="possible-value-container">
-        <div 
-        *ngFor="let val of possibleValues; let i = index"
-        class="possible-value"
-        (click)="collapseValue($event)">
-            <span class="spanny">{{ possibleValues[i] }}</span>
-        </div>
+  >
+    <div
+      *ngFor="let val of possibleValues; let i = index"
+      class="possible-value"
+      (click)="collapseValue($event)"
+    >
+      <span class="spanny">
+        {{ possibleValues[i] }}
+      </span>
     </div>
-    <div class="value">
-        <!-- {{ displayValue }} -->
-    </div>
+  </div>
+  <!-- <div class="value"> -->
+  <!-- {{ displayValue }} -->
+  <!-- </div> -->
 </td>

@@ -1,1 +1,14 @@
-<p>chess-board works!</p>
+<main>
+  <table class="board">
+    <tr class="column" *ngFor="square; of: [].constructor(8); let i = index">
+      <div
+        class="square"
+        *ngFor="cell; of: [].constructor(8); let j = index"
+        [ngClass]="{
+          odd: (i + j) % 2 === 0,
+          even: (i + j) % 2 !== 0
+        }"
+      ></div>
+    </tr>
+  </table>
+</main>

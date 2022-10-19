@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CellComponent } from './cell/cell.component';
-import { BoardComponent } from './board/board.component';
 import { PaletteComponent } from './palette/palette.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
@@ -22,13 +20,13 @@ import { BoggleBoardComponent } from './boards/boggle-board/boggle-board.compone
 import { CrosswordBoardComponent } from './boards/crossword-board/crossword-board.component';
 import { SudokuCellComponent } from './boards/sudoku-board/sudoku-cell/sudoku-cell.component';
 import { SliderBoardComponent } from './boards/slider-board/slider-board.component';
+import { CyberBoardComponent } from './boards/cyber-board/cyber-board.component';
+import { SliderCellComponent } from './boards/slider-board/slider-cell/slider-cell.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CellComponent,
-    BoardComponent,
     PaletteComponent,
     HomePageComponent,
     SudokuBoardComponent,
@@ -37,6 +35,8 @@ import { SliderBoardComponent } from './boards/slider-board/slider-board.compone
     CrosswordBoardComponent,
     SudokuCellComponent,
     SliderBoardComponent,
+    CyberBoardComponent,
+    SliderCellComponent,
   ],
   imports: [
     MatSliderModule,

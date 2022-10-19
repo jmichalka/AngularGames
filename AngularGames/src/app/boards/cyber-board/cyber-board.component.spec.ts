@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CellComponent } from './cell.component';
+import { CyberBoardComponent } from './cyber-board.component';
 
-describe('CellComponent', () => {
-  let component: CellComponent;
-  let fixture: ComponentFixture<CellComponent>;
+describe('CyberBoardComponent', () => {
+  let component: CyberBoardComponent;
+  let fixture: ComponentFixture<CyberBoardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CellComponent ]
+      declarations: [ CyberBoardComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CellComponent);
+    fixture = TestBed.createComponent(CyberBoardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,46 @@
+#main {
+    position: relative;
+    --color: rgba(23, 23, 26, 1);
+    --width: 10px;
+    --height: 10px;
+    display: flex;
+    width: var(--width);
+    height: var(--height);
+    background-color: var(--color);
+    border-radius: 10px;
+}
+
+#display-value {
+    margin: auto;
+    font-size: xx-large;
+    font-weight: bold;
+    
+    
+    user-select: none;
+    
+    // color: white;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+	background-size: 4000% 4000%;
+	animation: gradient 10s ease infinite;
+    color: white;
+    // -webkit-text-stroke: 2px rgba(23, 23, 26, 0.8);
+    // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#main:hover {
+    filter:invert(1);
+}

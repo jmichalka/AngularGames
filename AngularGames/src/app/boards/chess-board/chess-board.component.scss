@@ -1,0 +1,27 @@
+main {
+    display: flex;
+}
+
+.board {
+    display: flex;
+    margin: auto;
+}
+
+.column {
+    display: grid;
+}
+
+.square {
+    background-color: green;
+    height: 50px;
+    width: 50px;
+    border: solid black 1px;
+}
+
+.odd {
+    background-color: hsl(50,50,75);
+}
+
+.even {
+    background-color: hsl(50,50,25);
+}

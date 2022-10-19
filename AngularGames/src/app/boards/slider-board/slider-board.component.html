@@ -1,1 +1,45 @@
-<p>slider-board works!</p>
+<main id="main">
+  <div
+    id="board"
+    [ngStyle]="{
+      '--width': width,
+      '--height': height,
+      '--spacing': spacing + 'px'
+    }"
+  >
+    <app-slider-cell
+      *ngFor="let cell of [].constructor(width * height); let i = index"
+      [value]="1"
+      [cellSize]="cellSize"
+    >
+    </app-slider-cell>
+  </div>
+  <div class="toolbar top">
+    <div class="slide-button-container top">
+      <div class="slide-button">
+        <span>↥</span>
+      </div>
+    </div>
+  </div>
+  <div class="toolbar left">
+    <div class="slide-button-container left">
+      <div class="slide-button">
+        <span>↤</span>
+      </div>
+    </div>
+  </div>
+  <div class="toolbar right">
+    <div class="slide-button-container right">
+      <div class="slide-button">
+        <span>↦</span>
+      </div>
+    </div>
+  </div>
+  <div class="toolbar bottom">
+    <div class="slide-button-container bottom">
+      <div class="slide-button">
+        <span>↧</span>
+      </div>
+    </div>
+  </div>
+</main>

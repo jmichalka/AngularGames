@@ -1,9 +1,9 @@
 <main>
-    <app-cell
+    <app-sudoku-cell
         *ngFor="let cell of [].constructor(values.length); 
             let i = index"
         [id]="{ x: null, y: null }"
-        [initialValue]="values[i].toString()"
-        [cellSize]="'40'">
-    </app-cell>
+        [promptValue]="values[i]"
+        [size]="'40'">
+    </app-sudoku-cell>
 </main>

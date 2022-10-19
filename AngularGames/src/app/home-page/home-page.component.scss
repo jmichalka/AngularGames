@@ -23,6 +23,7 @@ mat-card {
     position: relative;
     margin: 1em;
     transition: all 0.15s ease-out;
+    aspect-ratio: 1;
 }
 
 // mat-card::after {

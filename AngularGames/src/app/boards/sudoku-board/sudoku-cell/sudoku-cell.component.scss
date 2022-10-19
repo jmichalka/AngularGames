@@ -52,8 +52,25 @@
     grid-template-rows: repeat(3, 1fr);
 }
 
+.single-value-container {
+
+}
+
+.multiple-value-container {
+
+}
+
+.single-value {
+    border: solid pink 1px;
+}
+
+.multiple-value {
+    border: solid orange 1px;
+}
+
 .possible-value {
-    // box-sizing: border-box;
+    box-sizing:content-box;
+
     display: block;
     // height: 100%;
     aspect-ratio: 1;
