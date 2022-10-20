@@ -1,4 +1,5 @@
 <main id="main">
+  <!-- Main Board -->
   <div
     id="board"
     [ngStyle]="{
@@ -7,36 +8,68 @@
       '--spacing': spacing + 'px'
     }"
   >
-    <app-slider-cell
-      *ngFor="let cell of [].constructor(width * height); let i = index"
-      [value]="1"
-      [cellSize]="cellSize"
-    >
-    </app-slider-cell>
+  <!-- Slots -->
+    <div id="slot-container"
+    [ngStyle]="{
+        '--width': width,
+        '--height': height,
+        '--spacing': spacing + 'px'
+      }">
+      <div
+        *ngFor="let cell of [].constructor(width * height); let i = index"
+        class="slot"
+        [ngStyle]="{ '--slot-size': cellSize + 'px' }"
+      ></div>
+    </div>
+
+    <!-- Sliders -->
+    <div id="slider-container"
+    [ngStyle]="{
+        '--width': width,
+        '--height': height,
+        '--spacing': spacing + 'px'
+      }">
+      <app-slider-cell
+        *ngFor="let cell of cells; let i = index"
+        [value]="cells[i].value"
+        [cellSize]="cellSize"
+        [x]="this.cells[i].x"
+        [y]="this.cells[i].y"
+      >
+      </app-slider-cell>
+    </div>
   </div>
+
+  <!-- Toolbar Stuff -->
   <div class="toolbar top">
-    <div class="slide-button-container top">
+    <div class="slide-button-container top" (click)="handleArrowUp($event)">
       <div class="slide-button">
         <span>↥</span>
       </div>
     </div>
   </div>
   <div class="toolbar left">
-    <div class="slide-button-container left">
+    <div class="slide-button-container left" (click)="handleArrowLeft($event)">
       <div class="slide-button">
         <span>↤</span>
       </div>
     </div>
   </div>
   <div class="toolbar right">
-    <div class="slide-button-container right">
+    <div
+      class="slide-button-container right"
+      (click)="handleArrowRight($event)"
+    >
       <div class="slide-button">
         <span>↦</span>
       </div>
     </div>
   </div>
   <div class="toolbar bottom">
-    <div class="slide-button-container bottom">
+    <div
+      class="slide-button-container bottom"
+      (click)="handleArrowDown($event)"
+    >
       <div class="slide-button">
         <span>↧</span>
       </div>

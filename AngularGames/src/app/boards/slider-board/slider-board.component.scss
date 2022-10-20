@@ -1,6 +1,6 @@
 #main {
     display: grid;
-    background-color: rgba(23, 23, 26, 1);
+    background-color: rgba(25, 25, 25, 1);
     height: calc(100vh - 64px);
 
     grid-template-areas: 
@@ -12,17 +12,12 @@
 }
 
 #board {
+    position: relative;
     margin: auto;
 
     // Data stuff
-    display: grid;
-    --width: 1;
-    --height: 1;
     --spacing: 6px;
     grid-area: board;
-    grid-template-columns: repeat(var(--width), 1fr);
-    grid-template-rows: repeat(var(--height), 1fr);
-    gap: var(--spacing);
     padding: var(--spacing);
     border-radius: 16px;
     
@@ -30,9 +25,37 @@
 	background-size: 400% 400%;
 	animation: gradient 10s ease infinite;
 
-    // background-color: var(--color);
-	// height: 100vh;
-    // --color: darkmagenta;
+}
+
+#slot-container {
+    --width: 1;
+    --height: 1;
+    --spacing: 6px;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(var(--width), 1fr);
+    grid-template-rows: repeat(var(--height), 1fr);
+    gap: var(--spacing);
+}
+
+.slot {
+    --slot-size: 10px;
+    width: var(--slot-size);
+    height: var(--slot-size);
+    background-color: rgba(25, 25, 25, 1);
+    border-radius: 10px;
+    // box-shadow: inset 5px 5px 10px rgba(0,0,0,0.5),
+    // inset -5px -5px 10px rgba(0,0,0,0.5);
+    
+    // border: solid red 1px;
+}
+
+#slider-container {
+    position:absolute;
+    inset: 0;
+    // grid-template-columns: repeat(var(--width), 1fr);
+    // grid-template-rows: repeat(var(--height), 1fr);
+    // gap: var(--spacing);
 }
 
 @keyframes gradient {
