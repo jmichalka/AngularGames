@@ -102,4 +102,5 @@ export class SliderBoardComponent implements OnInit {
 
     this.cells.push(newCell);
   }
+
 }

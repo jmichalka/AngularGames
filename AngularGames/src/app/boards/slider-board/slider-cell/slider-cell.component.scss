@@ -15,9 +15,19 @@
   left: var(--x);
   top: var(--y);
 
-  transition-property: left, top;
+  transition-property: left, top, opacity;
   transition-duration: 0.25s;
   transition-timing-function: ease-in-out;
+  animation: fade-in 0.75s ease;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 #display-value {
@@ -28,6 +38,8 @@
   user-select: none;
 
   // color: white;
+  // font-family: 'cyber';
+
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;

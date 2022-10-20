@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: cyber;
+    src: url(../assets/Cyber.ttf) format("opentype");
+}
+
 :host {
     display:block;
     height: 100%;
