@@ -12,13 +12,15 @@ export class SliderCellComponent implements OnInit {
   @Input() x:number = 0;
   @Input() y:number = 0;
 
-  constructor() { }
-
+  constructor() {
+  }
+  
   ngOnInit(): void {
+    console.log(this.x, this.y);
+    
   }
 
   ngOnChanges(): void {
-    console.log(this.x, this.y)
   }
 
 }

@@ -12,32 +12,65 @@ export class SliderBoardComponent implements OnInit {
   height: number = 4;
   cellSize: number = 80;
   spacing: number = 6;
+  baseNumber: number = 2;
 
-  starterValues: number[] = [2, 4];
+  starterPowers: number[] = [1, 2];
 
   cells = [];
-
+  slots = [];
+  
+  
   // ---------- LIFE CYCLE -----------
 
   constructor(private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
+    this.slots = [...Array(this.width)].map(e => Array(this.height));
     this.addRandomCell();
+    // console.log(this.slots);
   }
 
   // ---------- EVENTS ----------
 
   @HostListener('window:keydown.arrowup', ['$event'])
   handleArrowUp(event: KeyboardEvent | MouseEvent) {
-    this.cells.forEach((cell) => {
-      if (cell.y > this.spacing) {
-        // cell.y -= this.cellSize + this.spacing;
-        cell.y = this.spacing;
+
+    for (let j = 1 ; j < this.height; j++) {
+      
+      if (this.slots[0][j] !== undefined) {
+        continue;
       }
-    });
+      
+
+      // For each slot starting at the top:
+
+      // (NOT MATTER) If the slot is empty, go to the next one  
+      // (NOT MATTER) If the slot is filled, do nothing
+
+
+      // If the second slot is full, check if first slot is empty
+        // If first slot is empty, move to first slot
+        // If first slot is full, check for merge
+          // (WAITING) If can merge, move to first slot, merge
+          // (WAITING) If can't merge, do nothing
+      
+      // If third slot is full, find last empty slot
+      // Move to last empty slot
+
+    }
+
+
+
+    // this.cells.forEach((cell) => {
+    //   if (cell.y > this.spacing) {
+    //     // cell.y -= this.cellSize + this.spacing;
+    //     cell.y = this.spacing;
+    //   }
+    // });
     this.addRandomCell();
     this.showSnackBar('arrow up');
   }
+
   @HostListener('window:keydown.arrowleft', ['$event'])
   handleArrowLeft(event: KeyboardEvent | MouseEvent) {
     this.cells.forEach((cell) => {
@@ -50,6 +83,7 @@ export class SliderBoardComponent implements OnInit {
     this.addRandomCell();
     this.showSnackBar('arrow left');
   }
+
   @HostListener('window:keydown.arrowright', ['$event'])
   handleArrowRight(event: KeyboardEvent | MouseEvent) {
     event.preventDefault();
@@ -62,6 +96,7 @@ export class SliderBoardComponent implements OnInit {
     this.addRandomCell();
     this.showSnackBar('arrow right');
   }
+
   @HostListener('window:keydown.arrowdown', ['$event'])
   handleArrowDown(event: KeyboardEvent | MouseEvent) {
     event.preventDefault();
@@ -84,23 +119,46 @@ export class SliderBoardComponent implements OnInit {
   }
 
   getRandomStarter(): number {
-    return this.starterValues[
-      Math.floor(Math.random() * this.starterValues.length)
-    ];
+    let power = this.starterPowers[
+      Math.floor(Math.random() * this.starterPowers.length)];
+    
+    return Math.pow(this.baseNumber, power); 
   }
 
   addRandomCell(): void {
+    
+    // Get empty slots
+    let emptyCells = [];
+
+    for (let i = 0; i < this.width; i++) {
+      for (let j = 0; j < this.height; j++) {
+        if (this.slots[i][j] === undefined) {
+          emptyCells.push(i * this.width + j);
+        }
+      }
+    }
+
+    // Select random empty slot
+    let randomCellIndex = Math.floor(Math.random() * emptyCells.length);
+    
+    let xIndex = randomCellIndex % this.height;
+    let yIndex = Math.floor(randomCellIndex / this.height);
+
+    // console.log(randomCellIndex);
+    // console.log(emptyCells);
+    // console.log(xIndex, yIndex);
+
     let newCell = {
-      x:
-        Math.floor(Math.random() * this.width) * (this.cellSize + this.spacing) +
-        this.spacing,
-      y:
-        Math.floor(Math.random() * this.height) * (this.cellSize + this.spacing) +
-        this.spacing,
+      x: xIndex * (this.cellSize + this.spacing) + this.spacing,
+      y: yIndex * (this.cellSize + this.spacing) + this.spacing,
       value: this.getRandomStarter(),
     };
 
+    this.slots[xIndex][yIndex] = newCell;
     this.cells.push(newCell);
+    
+    console.log(xIndex, yIndex);
+
   }
 
 }
