@@ -112,6 +112,14 @@ export class SliderBoardComponent implements OnInit {
 
   // ---------- METHODS ----------
 
+  moveCell():void {
+
+  }
+
+  mergeCells():void {
+    
+  }
+
   showSnackBar(message: string) {
     let config = new MatSnackBarConfig();
     config.duration = 3000;
@@ -133,7 +141,7 @@ export class SliderBoardComponent implements OnInit {
     for (let i = 0; i < this.width; i++) {
       for (let j = 0; j < this.height; j++) {
         if (this.slots[i][j] === undefined) {
-          emptyCells.push(i * this.width + j);
+          emptyCells.push(i + this.width * j);
         }
       }
     }

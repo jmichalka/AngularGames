@@ -43,65 +43,46 @@
     pointer-events: none;
 }
 
-.possible-value-container {
-    position: absolute;
+.single-value-container {
+    // border: solid pink 1px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    width: 100%;
+    height: 100%;
+    font-size: larger;
+}
+
+.multiple-value-container {
+    // border: solid orange 1px;
+    // position: absolute;
     display: grid;
     width: 100%;
     height: 100%;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-}
+    font-size: small;
+    // background-color: darkslategray;
 
-.single-value-container {
-
-}
-
-.multiple-value-container {
-
-}
-
-.single-value {
-    border: solid pink 1px;
-}
-
-.multiple-value {
-    border: solid orange 1px;
 }
 
 .possible-value {
     box-sizing:content-box;
 
-    display: block;
-    // height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     aspect-ratio: 1;
     user-select: none;
-    // text-align: center;
-    // justify-content: center;
-    // align-items: center;
-    // pointer-events: none;
     caret-color: transparent;
-    font-size: small;
-    background-color: darkslategray;
-    border: solid blue 1px;
+    
+    // border: solid blue 1px;
 }
 
 .possible-value:hover {
     filter: brightness(1.5);
-
 }
 
-.spanny {
-    display: inline-block;
-    border: solid green 1px;
-    margin: auto;
-}
-
-.text-center {
-    // justify-content: center;
-    // align-items: center;
-    text-align: center;
-    // line-height: 100%;
-}
 // ---------- EVENTS ----------
 
 .cell:hover {

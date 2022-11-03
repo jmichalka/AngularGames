@@ -17,15 +17,14 @@
   [style.background-color]="color"
 >
   <div
-    class="possible-value-container"
     [ngClass]="{
-      single: possibleValues.length === 1,
-      multiple: possibleValues.length > 1
+      'single-value-container': possibleValues.length === 1,
+      'multiple-value-container': possibleValues.length > 1
     }"
   >
     <div
-      *ngFor="let val of possibleValues; let i = index"
       class="possible-value"
+      *ngFor="let val of possibleValues; let i = index"
       (click)="collapseValue($event)"
     >
       <span class="spanny">
