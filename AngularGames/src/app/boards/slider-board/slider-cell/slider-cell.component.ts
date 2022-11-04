@@ -9,18 +9,25 @@ export class SliderCellComponent implements OnInit {
 
   @Input() value:number = 0;
   @Input() cellSize:number = 20;
-  @Input() x:number = 0;
-  @Input() y:number = 0;
+  @Input() spacing:number = 0;
+  @Input() xInd:number = 0;
+  @Input() yInd:number = 0;
+
+  xPos: number = 0;
+  yPos: number = 0;
 
   constructor() {
+    
   }
   
   ngOnInit(): void {
-    console.log(this.x, this.y);
+    // console.log(this.xInd, this.yInd);
     
   }
 
   ngOnChanges(): void {
+    this.xPos = this.xInd * (this.cellSize + this.spacing) + this.spacing;
+    this.yPos = this.yInd * (this.cellSize + this.spacing) + this.spacing;
   }
 
 }

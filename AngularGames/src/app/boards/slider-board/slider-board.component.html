@@ -33,8 +33,9 @@
         *ngFor="let cell of cells; let i = index"
         [value]="cells[i].value"
         [cellSize]="cellSize"
-        [x]="this.cells[i].x"
-        [y]="this.cells[i].y"
+        [spacing]="spacing"
+        [xInd]="this.cells[i].x"
+        [yInd]="this.cells[i].y"
       >
       </app-slider-cell>
     </div>

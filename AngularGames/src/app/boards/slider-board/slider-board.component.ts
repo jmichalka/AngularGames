@@ -18,15 +18,17 @@ export class SliderBoardComponent implements OnInit {
 
   cells = [];
   slots = [];
-  
-  
+
   // ---------- LIFE CYCLE -----------
 
   constructor(private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-    this.slots = [...Array(this.width)].map(e => Array(this.height));
-    this.addRandomCell();
+    this.slots = [...Array(this.width)].map((e) => Array(this.height));
+    // this.setCells(0, 0, 2);
+    this.addCell(0, 1, 2);
+    this.addCell(0, 2, 2);
+    // this.addRandomCell();
     // console.log(this.slots);
   }
 
@@ -35,49 +37,42 @@ export class SliderBoardComponent implements OnInit {
   @HostListener('window:keydown.arrowup', ['$event'])
   handleArrowUp(event: KeyboardEvent | MouseEvent) {
 
-    for (let j = 1 ; j < this.height; j++) {
-      
-      if (this.slots[0][j] !== undefined) {
-        continue;
+    // Do this for every column, iterate i
+    for (let i = 0; i < this.width; i++) {
+
+      // Do this for every cell in a column, iterate j
+      for (let j = 0; j < this.height; j++) {
+
+        // Is anything in this cell? If not, skip
+        if (this.slots[i][j] === undefined) {
+          // console.log('empty');
+          continue;
+        }
+
+        // Iterate through all slots in column for move/merge
+        for (let v = j; v > 0; v--) {
+          // Checking this slot for if it's undefined so we can move there
+          if (this.slots[i][v - 1] === undefined) {
+            // Move to that space
+            console.log("Moving");
+            this.moveCell(i, v, i, v - 1);
+          } else if (this.slots[i][v].value === this.slots[i][v - 1].value) {
+            console.log("Merging");
+            console.log(this.cells.length);
+            this.mergeCells(i, v, i, v - 1);
+            console.log(this.cells.length);
+          }
+        }
       }
-      
-
-      // For each slot starting at the top:
-
-      // (NOT MATTER) If the slot is empty, go to the next one  
-      // (NOT MATTER) If the slot is filled, do nothing
-
-
-      // If the second slot is full, check if first slot is empty
-        // If first slot is empty, move to first slot
-        // If first slot is full, check for merge
-          // (WAITING) If can merge, move to first slot, merge
-          // (WAITING) If can't merge, do nothing
-      
-      // If third slot is full, find last empty slot
-      // Move to last empty slot
-
     }
-
-
-
-    // this.cells.forEach((cell) => {
-    //   if (cell.y > this.spacing) {
-    //     // cell.y -= this.cellSize + this.spacing;
-    //     cell.y = this.spacing;
-    //   }
-    // });
-    this.addRandomCell();
     this.showSnackBar('arrow up');
   }
 
   @HostListener('window:keydown.arrowleft', ['$event'])
   handleArrowLeft(event: KeyboardEvent | MouseEvent) {
     this.cells.forEach((cell) => {
-      if (cell.x > this.spacing) {
-        // cell.x -= this.cellSize + this.spacing;
-        cell.x = this.spacing;
-
+      if (cell.x > 0) {
+        cell.x = 0;
       }
     });
     this.addRandomCell();
@@ -88,9 +83,8 @@ export class SliderBoardComponent implements OnInit {
   handleArrowRight(event: KeyboardEvent | MouseEvent) {
     event.preventDefault();
     this.cells.forEach((cell) => {
-      if (cell.x < (this.width - 1) * (this.cellSize + this.spacing)) {
-        // cell.x += this.cellSize + this.spacing;
-        cell.x = (this.width - 1) * (this.cellSize + this.spacing) + this.spacing;
+      if (cell.x < this.width - 1) {
+        cell.x = this.width - 1;
       }
     });
     this.addRandomCell();
@@ -101,9 +95,8 @@ export class SliderBoardComponent implements OnInit {
   handleArrowDown(event: KeyboardEvent | MouseEvent) {
     event.preventDefault();
     this.cells.forEach((cell) => {
-      if (cell.y < (this.height - 1) * (this.cellSize + this.spacing)) {
-        // cell.y += this.cellSize + this.spacing;
-        cell.y = (this.height - 1) * (this.cellSize + this.spacing) + this.spacing;
+      if (cell.y < this.height - 1) {
+        cell.y = this.height - 1;
       }
     });
     this.addRandomCell();
@@ -112,12 +105,33 @@ export class SliderBoardComponent implements OnInit {
 
   // ---------- METHODS ----------
 
-  moveCell():void {
+  moveCell(xStart, yStart, xEnd, yEnd): void {
+    // Adjustment in list
+    const cell = this.slots[xStart][yStart];
+    cell.x = xEnd;
+    cell.y = yEnd;
 
+    // Adjustment in grid
+    this.slots[xEnd][yEnd] = this.slots[xStart][yStart];
+    this.slots[xStart][yStart] = undefined;
   }
 
-  mergeCells():void {
-    
+  mergeCells(xStart, yStart, xEnd, yEnd): void {
+
+    // Adjustment in list
+    const startCell = this.slots[xStart][yStart];
+    const endCell = this.slots[xEnd][yEnd];
+
+    startCell.x = xEnd;
+    startCell.y = yEnd;
+    startCell.value += endCell.value;
+    console.log(startCell.value, endCell.value);
+    this.removeCell(endCell.x, endCell.y);
+
+    // Adjustment in grid
+    this.slots[xEnd][yEnd] = this.slots[xStart][yStart];
+
+    // this.slots[xStart][yStart] = undefined;
   }
 
   showSnackBar(message: string) {
@@ -127,14 +141,13 @@ export class SliderBoardComponent implements OnInit {
   }
 
   getRandomStarter(): number {
-    let power = this.starterPowers[
-      Math.floor(Math.random() * this.starterPowers.length)];
-    
-    return Math.pow(this.baseNumber, power); 
+    let power =
+      this.starterPowers[Math.floor(Math.random() * this.starterPowers.length)];
+
+    return Math.pow(this.baseNumber, power);
   }
 
   addRandomCell(): void {
-    
     // Get empty slots
     let emptyCells = [];
 
@@ -148,7 +161,7 @@ export class SliderBoardComponent implements OnInit {
 
     // Select random empty slot
     let randomCellIndex = Math.floor(Math.random() * emptyCells.length);
-    
+
     let xIndex = randomCellIndex % this.height;
     let yIndex = Math.floor(randomCellIndex / this.height);
 
@@ -157,16 +170,34 @@ export class SliderBoardComponent implements OnInit {
     // console.log(xIndex, yIndex);
 
     let newCell = {
-      x: xIndex * (this.cellSize + this.spacing) + this.spacing,
-      y: yIndex * (this.cellSize + this.spacing) + this.spacing,
+      x: xIndex,
+      y: yIndex,
       value: this.getRandomStarter(),
+      hasMerged: false,
     };
 
     this.slots[xIndex][yIndex] = newCell;
     this.cells.push(newCell);
-    
-    console.log(xIndex, yIndex);
 
+    console.log(xIndex, yIndex);
   }
 
+  addCell(x, y, val): void {
+    let newCell = {
+      x: x,
+      y: y,
+      value: val,
+      hasMerged: false,
+    };
+
+    this.slots[x][y] = newCell;
+    this.cells.push(newCell);
+  }
+
+  removeCell(x, y) {
+    const cell = this.slots[x][y];
+
+    this.slots[x][y] = undefined;
+    this.cells.splice(this.cells.indexOf(cell), 1);
+  }
 }
