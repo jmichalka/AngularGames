@@ -10,7 +10,7 @@
   height: var(--height);
   background-color: var(--color);
   border-radius: 10px;
-//   border: solid rgba(255, 255, 255, 0.5) 1px;
+  // border: solid rgba(255, 255, 255, 0.5) 1px;
 
   left: var(--x);
   top: var(--y);
@@ -19,6 +19,14 @@
   transition-duration: 0.25s;
   transition-timing-function: ease-in-out;
   animation: fade-in 0.5s ease;
+}
+
+#main::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  // background-color: green;
+  border-radius: inherit;
 }
 
 @keyframes fade-in {
@@ -38,7 +46,6 @@
   font-weight: bold;
 
   user-select: none;
-
   // color: white;
   // font-family: 'cyber';
 
@@ -67,17 +74,3 @@
 #main:hover {
   filter: invert(1);
 }
-
-// #main::before {
-//   content: "";
-//   position: absolute;
-//   inset: 0;
-//   left: 0;
-//   top: 0;
-//   border-radius: inherit;
-//   background: radial-gradient(
-//     800px circle at 100px 100px,
-//     rgba(255, 255, 255, 0.06),
-//     transparent 40%
-//   );
-// }
