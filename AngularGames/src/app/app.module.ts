@@ -22,6 +22,7 @@ import { SudokuCellComponent } from './boards/sudoku-board/sudoku-cell/sudoku-ce
 import { SliderBoardComponent } from './boards/slider-board/slider-board.component';
 import { CyberBoardComponent } from './boards/cyber-board/cyber-board.component';
 import { SliderCellComponent } from './boards/slider-board/slider-cell/slider-cell.component';
+import { SliderScoreComponent } from './boards/slider-board/slider-score/slider-score.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { SliderCellComponent } from './boards/slider-board/slider-cell/slider-ce
     SliderBoardComponent,
     CyberBoardComponent,
     SliderCellComponent,
+    SliderScoreComponent,
   ],
   imports: [
     MatSliderModule,

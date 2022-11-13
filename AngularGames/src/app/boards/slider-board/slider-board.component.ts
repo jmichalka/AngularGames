@@ -28,6 +28,8 @@ export class SliderBoardComponent implements OnInit {
   slots = [];
   isSliding: boolean = false;
 
+  score: number = 9999;
+
   // ---------- LIFE CYCLE -----------
 
   constructor(private _snackBar: MatSnackBar) {}
@@ -70,8 +72,12 @@ export class SliderBoardComponent implements OnInit {
     );
     this.cells = [];
 
+    
     this.addCell(1, 0, 2);
     this.addCell(1, 2, 4);
+
+    this.updateScore();
+
     console.table(this.getFlippedSlots());
   }
 
@@ -164,6 +170,7 @@ export class SliderBoardComponent implements OnInit {
     }
 
     this.isSliding = false;
+    this.updateScore();
     this.checkGameOver();
     this.cleanCells();
   }
@@ -310,5 +317,13 @@ export class SliderBoardComponent implements OnInit {
     }
 
     return flippedSlots;
+  }
+
+  updateScore(): void {
+    let score = 0;
+    this.cells.forEach(cell => {
+      score += cell.value;
+    });
+    this.score = score;
   }
 }

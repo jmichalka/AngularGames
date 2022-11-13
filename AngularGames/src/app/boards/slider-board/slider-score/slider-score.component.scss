@@ -1,0 +1,22 @@
+#main {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-size: 4000% 4000%;
+    animation: gradient 10s ease infinite;
+    // border: solid red 1px;
+}
+
+.score-display {
+    margin: auto;
+    font-size: xx-large;
+    font-weight: bold;
+    user-select: none;
+    padding: 1em;
+
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-size: 4000% 4000%;
+    animation: gradient 10s ease infinite;
+}
