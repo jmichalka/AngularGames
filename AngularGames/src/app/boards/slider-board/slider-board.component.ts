@@ -22,7 +22,14 @@ export class SliderBoardComponent implements OnInit {
   spacing: number = 6;
   baseNumber: number = 2;
 
-  starterPowers: number[] = [1, 2];
+  starterPowers = [
+    { 
+      value: 1, 
+      probability: 0.9}, 
+    {
+      value: 2, 
+      probability: 0.1}
+    ];
 
   cells = [];
   slots = [];
@@ -78,7 +85,7 @@ export class SliderBoardComponent implements OnInit {
 
     this.updateScore();
 
-    console.table(this.getFlippedSlots());
+    // console.table(this.getFlippedSlots());
   }
 
   slide(direction) {
@@ -162,7 +169,7 @@ export class SliderBoardComponent implements OnInit {
         }
         break;
       default:
-        console.log('Error finding direction to slide');
+        // console.log('Error finding direction to slide');
     }
 
     if (this.isSliding) {
@@ -221,8 +228,30 @@ export class SliderBoardComponent implements OnInit {
   }
 
   getRandomStarter(): number {
-    let power =
-      this.starterPowers[Math.floor(Math.random() * this.starterPowers.length)];
+
+    let probArray = [];
+    this.starterPowers.forEach((option, index) => {
+      probArray[index] = option.probability;
+
+      if (index > 0) {
+        probArray[index] += probArray[index - 1];
+      }
+    });
+
+    let randomValue = Math.random();
+
+    let selectedIndex = 0;
+    probArray.every((probVal, index) => {
+      console.log("Probval = ",probVal);
+      if (randomValue < probVal) {
+        selectedIndex = index;
+        return false;
+      } else {
+        return true;
+      }
+    });
+
+    let power = this.starterPowers[selectedIndex].value;
 
     return Math.pow(this.baseNumber, power);
   }
@@ -259,10 +288,10 @@ export class SliderBoardComponent implements OnInit {
 
   checkGameOver(): void {
     if (!this.slots.some((column) => column.includes(undefined))) {
-      console.log('Found none');
+      // console.log('Found none');
       this.endGame();
     } else {
-      console.log('Found some');
+      // console.log('Found some');
     }
   }
 
@@ -296,7 +325,7 @@ export class SliderBoardComponent implements OnInit {
     this.slots[x][y] = newCell;
     this.cells.push(newCell);
 
-    console.table(this.getFlippedSlots());
+    // console.table(this.getFlippedSlots());
   }
 
   removeCell(x, y) {
