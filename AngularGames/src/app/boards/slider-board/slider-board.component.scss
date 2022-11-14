@@ -115,13 +115,16 @@
     flex-direction: column;
     justify-content: end;
 }
+
 .left {
     grid-area: toolbar-left;
     justify-content: end;
 }
+
 .right {
     grid-area: toolbar-right;
 }
+
 .bottom {
     grid-area: toolbar-bottom;
     flex-direction: column;
@@ -129,12 +132,6 @@
 
 .score {
     grid-area: score;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: 
-        gradient 10s ease infinite, 
-        // fade-in 2s, 
-        swipe-in 1s forwards;
 }
 
 .slide-button-container {

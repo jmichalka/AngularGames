@@ -74,14 +74,14 @@ export class SliderBoardComponent implements OnInit {
   // ---------- METHODS ----------
 
   setup(): void {
+
     this.slots = [...Array(this.width)].map((e) =>
       Array(this.height).fill(undefined)
     );
     this.cells = [];
 
-    
-    this.addCell(1, 0, 2);
-    this.addCell(1, 2, 4);
+    this.addRandomCell();
+    this.addRandomCell();
 
     this.updateScore();
 
