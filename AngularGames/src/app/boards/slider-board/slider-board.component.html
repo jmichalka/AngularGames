@@ -8,13 +8,15 @@
       '--spacing': spacing + 'px'
     }"
   >
-  <!-- Slots -->
-    <div id="slot-container"
-    [ngStyle]="{
+    <!-- Slots -->
+    <div
+      id="slot-container"
+      [ngStyle]="{
         '--width': width,
         '--height': height,
         '--spacing': spacing + 'px'
-      }">
+      }"
+    >
       <div
         *ngFor="let cell of [].constructor(width * height); let i = index"
         class="slot"
@@ -23,12 +25,14 @@
     </div>
 
     <!-- Sliders -->
-    <div id="slider-container"
-    [ngStyle]="{
+    <div
+      id="slider-container"
+      [ngStyle]="{
         '--width': width,
         '--height': height,
         '--spacing': spacing + 'px'
-      }">
+      }"
+    >
       <app-slider-cell
         *ngFor="let cell of cells; let i = index"
         [value]="cells[i].value"
@@ -43,14 +47,20 @@
 
   <!-- Toolbar Stuff -->
   <div class="toolbar top">
-    <div class="slide-button-container top" (click)="handleArrowUp($event)">
+    <div
+      class="slide-button-container top"
+      (pointerdown)="handleArrowUp($event)"
+    >
       <div class="slide-button">
         <span>↥</span>
       </div>
     </div>
   </div>
   <div class="toolbar left">
-    <div class="slide-button-container left" (click)="handleArrowLeft($event)">
+    <div
+      class="slide-button-container left"
+      (pointerdown)="handleArrowLeft($event)"
+    >
       <div class="slide-button">
         <span>↤</span>
       </div>
@@ -59,7 +69,7 @@
   <div class="toolbar right">
     <div
       class="slide-button-container right"
-      (click)="handleArrowRight($event)"
+      (pointerdown)="handleArrowRight($event)"
     >
       <div class="slide-button">
         <span>↦</span>
@@ -69,7 +79,7 @@
   <div class="toolbar bottom">
     <div
       class="slide-button-container bottom"
-      (click)="handleArrowDown($event)"
+      (pointerdown)="handleArrowDown($event)"
     >
       <div class="slide-button">
         <span>↧</span>
@@ -78,8 +88,5 @@
   </div>
 
   <!-- Scoreboard -->
-  <app-slider-score
-    class="toolbar score"
-    [score] = score>
-  </app-slider-score>
+  <app-slider-score class="toolbar score" [score]="score"> </app-slider-score>
 </main>

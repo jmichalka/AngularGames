@@ -16,20 +16,22 @@ const Directions = Object.freeze({
 })
 export class SliderBoardComponent implements OnInit {
   // ---------- CONFIG ----------
-  width: number = 4;
-  height: number = 4;
+  width: number = 2;
+  height: number = 2;
   cellSize: number = 80;
   spacing: number = 6;
   baseNumber: number = 2;
 
   starterPowers = [
-    { 
-      value: 1, 
-      probability: 0.9}, 
     {
-      value: 2, 
-      probability: 0.1}
-    ];
+      value: 1,
+      probability: 0.9,
+    },
+    {
+      value: 2,
+      probability: 0.1,
+    },
+  ];
 
   cells = [];
   slots = [];
@@ -74,7 +76,6 @@ export class SliderBoardComponent implements OnInit {
   // ---------- METHODS ----------
 
   setup(): void {
-
     this.slots = [...Array(this.width)].map((e) =>
       Array(this.height).fill(undefined)
     );
@@ -83,9 +84,8 @@ export class SliderBoardComponent implements OnInit {
     this.addRandomCell();
     this.addRandomCell();
 
-    this.updateScore();
 
-    // console.table(this.getFlippedSlots());
+    this.resetScore();
   }
 
   slide(direction) {
@@ -169,17 +169,17 @@ export class SliderBoardComponent implements OnInit {
         }
         break;
       default:
-        // console.log('Error finding direction to slide');
+      // console.log('Error finding direction to slide');
     }
 
     if (this.isSliding) {
       this.addRandomCell();
     }
-
     this.isSliding = false;
-    this.updateScore();
+
     this.checkGameOver();
     this.cleanCells();
+
   }
 
   moveCell(xStart, yStart, xEnd, yEnd): void {
@@ -211,6 +211,10 @@ export class SliderBoardComponent implements OnInit {
 
     // Adjust start cell
     startCell.value += endCell.value;
+
+    // Add this new value to the score
+    this.addToScore(startCell.value);
+
     startCell.x = endCell.x;
     startCell.y = endCell.y;
     this.slots[xStart][yStart] = undefined;
@@ -218,7 +222,6 @@ export class SliderBoardComponent implements OnInit {
     // Adjust end cell
     this.slots[xEnd][yEnd] = startCell;
     this.cells.splice(this.cells.indexOf(endCell), 1);
-
   }
 
   showSnackBar(message: string, button: string = null) {
@@ -228,7 +231,6 @@ export class SliderBoardComponent implements OnInit {
   }
 
   getRandomStarter(): number {
-
     let probArray = [];
     this.starterPowers.forEach((option, index) => {
       probArray[index] = option.probability;
@@ -242,7 +244,7 @@ export class SliderBoardComponent implements OnInit {
 
     let selectedIndex = 0;
     probArray.every((probVal, index) => {
-      console.log("Probval = ",probVal);
+      console.log('Probval = ', probVal);
       if (randomValue < probVal) {
         selectedIndex = index;
         return false;
@@ -281,38 +283,48 @@ export class SliderBoardComponent implements OnInit {
   }
 
   cleanCells(): void {
-    this.cells.forEach( cell => {
+    this.cells.forEach((cell) => {
       cell.hasMerged = false;
-    })
+    });
   }
 
+
+  // Boundary condition
   checkGameOver(): void {
     if (!this.slots.some((column) => column.includes(undefined))) {
-      // console.log('Found none');
-      this.endGame();
-    } else {
-      // console.log('Found some');
+      console.log("Board filled!")
+      let isMergeable = this.cells.some(cell => {
+        return this.checkNeighbors(cell.x, cell.y);
+      })
+
+      
+
+      if (!isMergeable) {
+        this.endGame();
+      } else {
+        console.log("Close one!");
+      }
     }
   }
 
   endGame(): void {
-    this.showSnackBar('GAME OVER');
-    this.setup();
+    console.log('GAME OVER');
+    // this.setup();
   }
 
-  addNextCell(): void {
-    for (let i = 0; i < this.width; i++) {
-      for (let j = 0; j < this.height; j++) {
-        if (this.slots[i][j] === undefined) {
-          this.addCell(i, j, this.getRandomStarter());
-          return;
-        } else {
-        }
-      }
-    }
+  // addNextCell(): void {
+  //   for (let i = 0; i < this.width; i++) {
+  //     for (let j = 0; j < this.height; j++) {
+  //       if (this.slots[i][j] === undefined) {
+  //         this.addCell(i, j, this.getRandomStarter());
+  //         return;
+  //       } else {
+  //       }
+  //     }
+  //   }
 
-    alert('GAME OVER');
-  }
+  //   alert('GAME OVER');
+  // }
 
   addCell(x, y, val): void {
     let newCell = {
@@ -348,11 +360,57 @@ export class SliderBoardComponent implements OnInit {
     return flippedSlots;
   }
 
+  resetScore(): void {
+    this.score = 0;
+  }
+
+  addToScore(val: number): void {
+    this.score += val;
+    // this.showSnackBar(`${val} added`);
+  }
+
   updateScore(): void {
     let score = 0;
-    this.cells.forEach(cell => {
+    this.cells.forEach((cell) => {
       score += cell.value;
     });
     this.score = score;
   }
+
+  checkNeighbors(x, y): boolean {
+
+    const cell = this.slots[x][y];
+
+    // Check up
+    if (y > 0) {
+      if (this.slots[x][y-1].value === cell.value) {
+        return true;
+      }
+    }
+    // Check down
+    if (y < this.height - 1) {
+      if (this.slots[x][y+1].value === cell.value) {
+        return true;
+      }
+    }
+    // Check left
+    if (x > 0) {
+      if (this.slots[x-1][y].value === cell.value) {
+        return true;
+      }
+    }
+    // Check right
+    if (x < this.width - 1) {
+      if (this.slots[x+1][y].value === cell.value) {
+        return true;
+      }
+    }
+
+
+    return false;
+
+  }
+
+
+
 }
